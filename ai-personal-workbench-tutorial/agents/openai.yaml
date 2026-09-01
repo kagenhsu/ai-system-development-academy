@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI 個人工作台教學"
+  short_description: "帶新手用 AI 做個人工作台"
+  default_prompt: "請使用 $ai-personal-workbench-tutorial，帶我從工作痛點開始建立 AI 個人工作台。"
+policy:
+  allow_implicit_invocation: true

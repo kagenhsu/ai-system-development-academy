@@ -1,0 +1,24 @@
+# 舊版網站與私人參考來源
+site/
+0 基础做 App 保姆级教程.mp4
+0 基础做 App 保姆级教程.txt
+40381252.png
+ai-personal-workbench-tutorial/references/source-notes-original.txt
+
+# 私人設定與金鑰
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+credentials*
+secrets*
+
+# 本機產物
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+

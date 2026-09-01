@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "AI 系統開發實戰學院原型",
+  "short_name": "AI 開發學院",
+  "description": "從想法、Web 到 Android 與 iOS 的 AI 系統開發教學原型",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f9fa",
+  "theme_color": "#2467b2",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
