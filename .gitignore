@@ -22,3 +22,6 @@ node_modules/
 Thumbs.db
 *.log
 
+# 可重製的生成原始圖；僅提交網站實際使用的透明成品。
+ai-system-development-academy/prototype/assets/illustrations/*-source.png
+ai-system-development-academy/prototype/assets/mascot/*-source.png

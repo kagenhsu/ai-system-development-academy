@@ -1,12 +1,13 @@
+// Three glossary variants, switchable with ?variant=A|B|C on the existing glossary route.
 const logoPath = "assets/logo.png"
 
 const stages = [
   { id: "00", slug: "stage-00.html", title: "開發準備", summary: "選擇 AI 工具、模型策略與工作空間", input: "一個想做系統的大概方向", output: "工具與專案工作空間", terms: ["AI 助手", "大模型", "Token", "工作空間"], steps: ["依讀檔、寫檔、圖片與執行能力選工具", "重要規格使用高能力模型，大量局部工作使用合適的執行型模型", "建立獨立專案資料夾並讓 AI 開啟正確工作空間", "移除密碼、金鑰、個資與公司機密"], prompt: "請協助我檢查開發前準備\n\n我的系統方向：＿＿＿＿＿＿＿＿\n我的電腦平台：Windows／macOS\n我使用的 AI 工具：＿＿＿＿＿＿＿＿\n\n請逐項確認工具是否能讀寫檔案、查看圖片、執行程式與保存專案文件\n發現缺少條件時只列出修正方法，不要開始開發" },
   { id: "01", slug: "stage-01.html", title: "需求訪談", summary: "讓 AI 一題一題問出真正需求", input: "系統方向與初步想法", output: "完整需求文件", terms: ["目標使用者", "使用情境", "需求範圍", "驗收條件"], steps: ["先說明想做哪一類系統", "要求 AI 每次只問一個問題", "回答模糊時繼續追問具體情境", "資訊足夠後輸出完整需求文件"], prompt: "請用一問一答方式收集我想開發系統的需求\n每次只輸出一個問題，等我回覆後再問下一題\n提問需涵蓋目標使用者、真實痛點、使用場景、需要與不要的功能、運行設備、參考產品與特殊限制\n我回答模糊時請追問細節\n資訊足夠後輸出一份結構完整的需求文件讓我確認\n\n我準備做的系統：＿＿＿＿＿＿＿＿\n我的初步想法：＿＿＿＿＿＿＿＿\n\n現在開始第一個問題" },
-  { id: "02", slug: "stage-02.html", title: "功能清單", summary: "依模組、功能、子功能建立產品地基", input: "已確認需求文件", output: "完整三級功能清單", terms: ["一級模組", "二級功能", "三級子功能", "P0／P1／P2"], steps: ["把需求拆成一級模組、二級功能與三級子功能", "標記核心必做、次要迭代與未來規劃", "每項說明解決的使用者問題", "局部修正後要求重新輸出完整清單"], prompt: "你是資深產品經理，請根據已確認需求輸出完整功能清單\n\n要求\n1 依一級模組、二級功能、三級子功能拆分\n2 標記核心必做、次要迭代、未來規劃\n3 每項寫簡短能力描述與解決的使用者問題\n4 不寫 UI 位置、配色與動畫\n5 使用 Markdown 清楚分層\n6 缺少資訊標記待確認，不自行增加業務規則\n7 輸出完整版本，不只列出本次修改部分" },
-  { id: "03", slug: "stage-03.html", title: "PRD", summary: "把功能清單轉成可評審的產品規則", input: "完整功能清單", output: "產品需求文件 PRD", terms: ["PRD", "正常場景", "異常場景", "非功能需求"], steps: ["說明文件背景、目的與適用範圍", "逐項定義輸入、流程、輸出與規則", "補齊正常、空資料與錯誤情境", "建立可交付測試的驗收標準"], prompt: "你是資深產品經理，請把已確認功能清單轉成標準 PRD\n逐項說明輸入、操作流程、輸出、規則、限制、正常場景與異常場景\n文件需包含背景、目的、受眾、產品目標、功能需求、業務流程、權限、非功能需求、上線約束、排期與備註\n資訊不足時標記【需產品確認】，不要自行刪減已確認需求" },
-  { id: "04", slug: "stage-04.html", title: "互動原型", summary: "先看清楚頁面與操作再寫程式", input: "已確認 PRD", output: "高保真原型結構", terms: ["原型", "元件", "彈窗", "抽屜"], steps: ["列出全部頁面與全局組件", "定義每個元件的位置、文字與默認狀態", "說明點擊後的跳轉、彈窗與錯誤提示", "只描述原型結構，不描述視覺美化"], prompt: "你是產品原型專家，請嚴格依據 PRD 輸出高保真原型規格\n列出全部頁面、彈窗、抽屜與浮層\n說明每個元件的位置、文案、類型與默認狀態\n寫清楚按鈕點擊結果、頁面跳轉、表單驗證與錯誤提示\n不做 UI 視覺美化描述\nPRD 資訊不足時標記【需產品確認】" },
-  { id: "05", slug: "stage-05.html", title: "UI 設計", summary: "把原型轉成一致且可閱讀的介面規格", input: "PRD 與互動原型", output: "UI 規格與完整畫面", terms: ["UI", "設計系統", "響應式", "空狀態"], steps: ["確認資訊層級與內容優先順序", "定義元件、狀態與視覺規則", "補齊桌面與手機寬度", "不為了美化新增產品功能"], prompt: "請根據已確認 PRD 與互動原型輸出完整 UI 設計規格\n必須保持頁面、功能與操作流程一致\n說明資訊層級、元件狀態、空資料、錯誤與響應式行為\n不得新增 PRD 未確認功能\n所有不確定選擇列為待確認" },
+  { id: "02", slug: "stage-02.html", title: "功能清單", summary: "把首頁改版拆成可驗收的內容、導覽、圖卡與響應式功能", input: "已確認的首頁改版方向", output: "首頁功能清單 v1.1", terms: ["一級模組", "二級功能", "三級子功能", "P0／P1／P2"], steps: ["依首頁區塊拆出內容、導覽、圖像與發布路線模組", "把每張資訊卡的標題、專屬介紹與連結列成可檢查能力", "標記 P0 的可讀性、透明插圖與手機版排版規則", "每次調整後更新完整清單，不只補一張卡"], prompt: "你是資深產品經理，請根據已確認的 AI 系統開發實戰學院首頁改版輸出完整功能清單\n\n已確認規則\n- 吉祥物、卡片插圖與流程圖必須維持同一套深藍、電藍、青綠、金黃的插圖語言\n- 系統類型、學習入口與手機發布卡都要有對應透明插圖，置於右上角且不遮住文字\n- 卡片文字依標題提供專屬介紹，卡高依內容收合\n- 首頁在桌面三欄、平板雙欄、手機單欄都必須可讀\n\n要求\n1 依一級模組、二級功能、三級子功能拆分\n2 標記 P0、P1、P2\n3 每項寫能力、使用者價值與驗收點\n4 不描述未確認的後端或商業規則\n5 輸出完整版本" },
+  { id: "03", slug: "stage-03.html", title: "PRD", summary: "把首頁改版的內容、互動與驗收條件寫成可交付的產品規則", input: "首頁功能清單 v1.1", output: "首頁產品需求文件 PRD v1.1", terms: ["PRD", "正常場景", "異常場景", "非功能需求"], steps: ["定義首頁的導覽、學習路徑、感謝來源與延伸路線", "逐區塊寫清楚內容、連結目的、插圖用途與驗收條件", "補齊圖片載入失敗、窄螢幕與外部連結的處理", "把已確認的視覺邏輯列為品質需求，而非新增功能"], prompt: "你是資深產品經理，請將 AI 系統開發實戰學院首頁功能清單轉為 PRD v1.1\n\n本次已確認範圍\n- 首頁 Hero、來源與致謝、六張系統類型卡、開發流程圖、兩張學習入口卡、三張手機發布卡\n- 每張有插圖的卡片採右上角圖示與左下文字的斜對角資訊層級\n- 系統類型卡使用專屬介紹文字，卡片高度依內容自適應\n\n請包含背景、目標使用者、產品目標、範圍、功能需求、互動流程、內容規則、響應式與無障礙要求、正常與異常場景、可驗收條件。\n未確認事項標示【需確認】，不要補造功能。" },
+  { id: "04", slug: "stage-04.html", title: "互動原型", summary: "把首頁改版轉成可直接檢查區塊、連結與響應式狀態的原型規格", input: "首頁 PRD v1.1", output: "首頁互動原型規格 v1.1", terms: ["原型", "元件", "彈窗", "抽屜"], steps: ["列出首頁區塊順序與每一張卡的預設內容", "定義主導覽、CTA、卡片連結與手機選單的跳轉結果", "明確標示圖示不遮文字、卡片高度收合與圖片替代文字", "先確認資訊架構與互動閉環，再進入 UI 視覺細節"], prompt: "你是產品原型專家，請根據 AI 系統開發實戰學院首頁 PRD v1.1 輸出原型規格。\n\n請逐一列出 Hero、來源與致謝、系統類型卡、流程圖、學習入口卡、手機發布卡、頁尾。\n每個區塊必須說明：位置、內容、初始狀態、可點擊元件、跳轉目標、桌面與手機排列、空白或圖片失敗時的替代狀態。\n卡片採右上圖示／左下文字的斜對角布局；不新增 PRD 外的功能。" },
+  { id: "05", slug: "stage-05.html", title: "UI 設計", summary: "把首頁原型轉成與吉祥物插圖一致、可在桌面與手機閱讀的 UI 規格", input: "首頁 PRD 與互動原型 v1.1", output: "首頁 UI 設計規格 v1.1", terms: ["UI", "設計系統", "響應式", "空狀態"], steps: ["固定首頁的深藍、電藍、青綠、金黃與留白視覺語言", "定義 Hero、流程卡與資訊卡的文字層級、圓角、陰影與間距", "讓透明插圖依卡片容器比例縮放並留出文字安全區", "驗證桌面三欄、平板雙欄與手機單欄的閱讀順序"], prompt: "請根據 AI 系統開發實戰學院首頁 PRD v1.1 與原型規格輸出 UI 設計規格。\n\n已確認設計語言\n- 深藍為主要文字與結構色，電藍、青綠作操作與分段色，金黃作提示色\n- 吉祥物與所有小圖示使用一致的 3D 插圖風格，透明背景\n- 資訊卡的插圖固定在右上角，文字由左下向右上建立斜對角閱讀動線\n- 圖示大小使用容器比例自適應；不得遮住標題、內文或吉祥物臉部\n- 卡片高度依內容收合，桌面三欄、平板雙欄、手機單欄\n\n請列出色彩、字級、間距、卡片、按鈕、插圖、響應式與無障礙規格；不得新增未確認功能。" },
   { id: "06", slug: "stage-06.html", title: "TRD", summary: "把產品規則轉成技術施工圖", input: "PRD、原型與 UI 規格", output: "技術需求文件 TRD", terms: ["TRD", "前端", "後端", "API", "資料模型"], steps: ["逐項對照 PRD 功能", "定義前端、後端與資料模型", "列出 API、輸入驗證與錯誤處理", "補充權限、日誌、測試與技術風險"], prompt: "你是資深系統架構師，請把已確認 PRD 轉成 TRD\n逐項列出前端、後端、資料模型、API、輸入驗證、錯誤處理、權限、日誌、測試與風險\n忠實轉換產品需求，不自行新增功能\n不確定的技術選擇列為待確認" },
   { id: "07", slug: "stage-07.html", title: "開發計畫", summary: "把大系統拆成可以逐步驗收的工作", input: "PRD 與 TRD", output: "里程碑與任務清單", terms: ["里程碑", "任務依賴", "垂直切片", "P0"], steps: ["先排最小可驗收垂直切片", "整理任務前後依賴", "每項任務設定驗收條件", "避免一次開發全部功能"], prompt: "請根據 PRD 與 TRD 產生開發實施計畫\n先安排一個可操作、可保存、可驗收的最小垂直切片\n再依前置依賴拆分後續任務\n每項標示輸入、產物、相關檔案、測試與驗收條件" },
   { id: "08", slug: "stage-08.html", title: "Web 開發與測試", summary: "一次只完成一段真實可操作功能", input: "完整文件與開發計畫", output: "可操作 Web 系統", terms: ["Web", "自動測試", "資料持久化", "回歸測試"], steps: ["先交叉檢查全部規格", "每輪只做一個垂直切片", "同步完成程式與測試", "使用實際操作證據確認功能"], prompt: "請先交叉檢查需求、功能清單、PRD、原型、UI、TRD 與開發計畫\n列出衝突、缺失與待確認\n確認後只實作本輪指定垂直切片\n先列修改檔案與驗收條件，再進行開發與測試" },
@@ -15,8 +16,8 @@ const stages = [
 ]
 
 const termCatalog = [
-  { slug: "ai-assistant", name: "AI 助手", stage: "階段 0", meaning: "能理解指令並協助讀檔、寫檔、看圖、執行與整理工作的開發工具", use: "依任務能力與資料安全需求選擇工具，再開啟正確的專案資料夾", mistake: "只比較模型名稱，卻沒有確認工具能否操作本機專案" },
-  { slug: "language-model", name: "大模型", stage: "階段 0", meaning: "AI 助手用來理解文字、圖片與產生內容的核心推理模型", use: "全局規格使用能力較高的模型，大量局部任務再選合適模型", mistake: "把價格或排行榜當成唯一標準，忽略任務類型與圖片能力" },
+  { slug: "ai-assistant", name: "AI 助手", aliases: ["AI Agent", "Agent"], stage: "階段 0", meaning: "能理解指令，並在授權範圍內協助讀檔、寫檔、看圖、執行與整理工作的開發工具", use: "依任務能力與資料安全需求選擇工具，再開啟正確的專案資料夾", mistake: "只比較模型名稱，卻沒有確認 Agent 能否操作本機專案" },
+  { slug: "language-model", name: "大模型", aliases: ["AI 模型", "模型"], stage: "階段 0", meaning: "AI Agent 用來理解文字、圖片、推理與產生內容的核心模型", use: "先確認任務需要的理解與推理能力，再確認承載模型的 Agent 有哪些操作權限", mistake: "把模型名稱直接當成工具能力，忽略 Agent 權限、介面與執行環境" },
   { slug: "token", name: "Token", stage: "階段 0", meaning: "模型計算輸入與輸出內容用量的基本單位", use: "用來估算長文件、對話與程式開發可能消耗的模型用量", mistake: "把 Token 直接等同固定字數，忽略語言與模型計算方式不同" },
   { slug: "workspace", name: "工作空間", stage: "階段 0", meaning: "AI 助手目前允許讀取與修改的專案資料夾範圍", use: "每個系統建立獨立資料夾，開始新任務前確認開啟正確位置", mistake: "同時混入私人資料、公司資料與其他專案檔案" },
   { slug: "target-user", name: "目標使用者", stage: "階段 1", meaning: "真正會操作系統並從功能得到價值的人", use: "描述使用者的角色、能力、工作與實際限制", mistake: "用所有人當目標，造成需求無法排序" },
@@ -57,7 +58,11 @@ const termCatalog = [
   { slug: "github-pages", name: "GitHub Pages", stage: "階段 10", meaning: "由 GitHub 儲存庫建置與提供靜態網站的託管服務", use: "適合發布不需要後端伺服器的公開教學網站與文件", mistake: "把不能公開的資料、金鑰或私人逐字稿一起推送" },
   { slug: "deployment", name: "部署", stage: "階段 10", meaning: "把已驗收版本放到實際使用環境並完成設定的流程", use: "記錄建置、環境、網址、驗收與失敗回復方式", mistake: "只完成上傳，沒有檢查真正的正式網址" },
   { slug: "backup", name: "備份", stage: "階段 10", meaning: "將程式、設定與資料保存到可獨立取回的位置", use: "定期建立備份並實際測試能否還原", mistake: "備份與原始資料放在同一裝置且從未測試" },
-  { slug: "restore", name: "回復", stage: "階段 10", meaning: "部署失敗或版本異常時回到上一個可用狀態", use: "發布前先指定可回復版本、資料處理與執行步驟", mistake: "問題發生後才開始尋找上一版與資料備份" }
+  { slug: "restore", name: "回復", stage: "階段 10", meaning: "部署失敗或版本異常時回到上一個可用狀態", use: "發布前先指定可回復版本、資料處理與執行步驟", mistake: "問題發生後才開始尋找上一版與資料備份" },
+  { slug: "agent-skill", name: "Agent Skill", aliases: ["Skill"], stage: "跨階段工具", meaning: "把重複使用的提示、規則與參考資料封裝成可由 AI Agent 載入的工作能力", use: "確認工具正式支援的格式與安裝位置，再安裝完整 Skill 資料夾並驗證可被識別", mistake: "只複製 SKILL.md，遺漏它引用的 references、assets 或其他必要檔案" },
+  { slug: "github-discussions", name: "GitHub Discussions", stage: "完成與作品分享", meaning: "GitHub 儲存庫提供的公開討論區，可建立主題、附加圖片或連結並留言交流", use: "啟用作品分享分類後，讓學習者用自己的 GitHub 帳號分享公開成果", mistake: "把 Discussions 當成網站內聊天室，或在尚未啟用時直接導向 404" },
+  { slug: "official-source", name: "官方來源", stage: "模型指南與發布", meaning: "由產品或平台官方維護、可用來核對功能與規則的文件或公告", use: "模型能力、平台政策與發布要求都要保留官方網址並定期重新核對", mistake: "只引用社群貼文、影片或二手整理，就標示為已完成現況驗證" },
+  { slug: "verification-date", name: "最後驗證日期", stage: "模型指南與發布", meaning: "維護者最後一次實際核對官方資料的日期", use: "與官方來源一起顯示，提醒讀者能力與政策可能在日期之後變更", mistake: "只寫最新或目前可用，卻沒有留下核對日期與來源" }
 ]
 
 const findTerm = name => termCatalog.find(term => term.name === name || term.aliases?.includes(name))
@@ -66,11 +71,11 @@ const staticPages = {
   prompts: { title: "完整提示詞庫", lead: "每個階段都能在自己的頁面直接複製，這裡提供集中查找", type: "prompts" },
   templates: { title: "範例文件與空白模板", lead: "網站不收集你的文件，只提供去識別化範例與 Markdown 空白模板", type: "templates" },
   glossary: { title: "系統開發專有名詞", lead: "看到不熟悉的名詞，可以先用白話理解用途再回到開發流程", type: "glossary" },
+  modelGuide: { title: "AI 工具／模型選擇指南", lead: "先分清楚 Agent 與模型，再依任務、權限與官方資料做選擇", type: "model-guide" },
   safety: { title: "資料安全與公開檢查", lead: "把資料交給 AI 或 GitHub 前，先移除不能公開的內容", type: "safety" },
   faq: { title: "常見問題", lead: "整理第一次做系統最常遇到的阻礙與下一步", type: "faq" },
   complete: { title: "完成後分享你的系統", lead: "可以使用截圖、作品連結或兩者一起分享開發成果", type: "complete" },
   maintainer: { title: "維護者簡易操作手冊", lead: "收到第一篇作品留言後，只要照五個步驟處理", type: "maintainer" },
-  credits: { title: "致謝與參考來源", lead: "感謝公開分享 AI 開發方法的創作者與網友", type: "credits" },
   case: { title: "工作台到駕駛艙案例", lead: "案例展示一套需求如何走完整個開發流程，不限制你只能做工作台", type: "case" }
 }
 
@@ -83,6 +88,7 @@ function navMarkup() {
     ["pwa-install.html", "加入主畫面", "pwa"],
     ["mobile-app.html", "手機 App", "mobile"],
     ["prompts.html", "提示詞", "prompts"],
+    ["model-guide.html", "模型指南", "model-guide"],
     ["glossary.html", "名詞", "glossary"],
     ["complete.html", "作品分享", "complete"]
   ]
@@ -96,16 +102,26 @@ function navMarkup() {
   <div class="drawer-backdrop" data-drawer-backdrop></div>
   <aside class="mobile-drawer" aria-label="手機導覽" data-mobile-drawer>
     <div class="drawer-head"><strong>教學導覽</strong><button class="drawer-close" type="button" aria-label="關閉選單" data-menu-close>×</button></div>
-    <nav class="drawer-links"><a href="index.html">首頁</a><a href="roadmap.html">完整學習路線</a>${stages.map(s=>`<a href="${s.slug}">階段 ${s.id}｜${s.title}</a>`).join("")}<a href="pwa-install.html">網頁加入主畫面</a><a href="mobile-app.html">手機 App 總覽</a><a href="android-publish.html">Android 發布</a><a href="ios-publish.html">iOS 發布</a><a href="maintainer-guide.html">維護者手冊</a></nav>
+    <nav class="drawer-links"><a href="index.html">首頁</a><a href="index.html#source">首頁來源與致謝區</a><a href="roadmap.html">完整學習路線</a>${stages.map(s=>`<a href="${s.slug}">階段 ${s.id}｜${s.title}</a>`).join("")}<a href="prompts.html">完整提示詞</a><a href="model-guide.html">AI 工具／模型選擇指南</a><a href="glossary.html">專有名詞</a><a href="pwa-install.html">網頁加入主畫面</a><a href="mobile-app.html">手機 App 總覽</a><a href="android-publish.html">Android 發布</a><a href="ios-publish.html">iOS 發布</a><a href="maintainer-guide.html">維護者手冊</a></nav>
   </aside>`
 }
 
 function footerMarkup() {
-  return `<footer class="site-footer"><div><strong>AI 系統開發實戰學院</strong><p>網站只保存匿名階段進度，不保存你的需求、文件或作品</p></div><nav class="footer-links"><a href="safety.html">資料安全</a><a href="maintainer-guide.html">維護者手冊</a><a href="credits.html">致謝來源</a><a href="https://github.com/kagenhsu/ai-system-development-academy/discussions" target="_blank" rel="noreferrer">GitHub Discussions ↗</a></nav></footer><div class="toast" role="status" aria-live="polite" data-toast></div>`
+  return `<footer class="site-footer"><div><strong>AI 系統開發實戰學院</strong><p>網站只保存匿名階段進度，不保存你的需求、文件或作品</p></div><nav class="footer-links"><a href="safety.html">資料安全</a><a href="glossary.html">專有名詞</a><a href="model-guide.html">模型選擇指南</a><a href="index.html#source">首頁來源與致謝區</a><a href="maintainer-guide.html">維護者手冊</a><a href="https://github.com/kagenhsu/ai-system-development-academy/discussions" target="_blank" rel="noreferrer">GitHub Discussions ↗</a></nav></footer><div class="toast" role="status" aria-live="polite" data-toast></div>`
 }
 
 function stageSidebar(current) {
   return `<aside class="stage-sidebar"><strong>階段導覽</strong><nav>${stages.map(s=>`<a class="${s.id===current?'active':''}" href="${s.slug}">${s.id}｜${s.title}</a>`).join("")}</nav></aside>`
+}
+
+function homepageUpdateDocument(stageId) {
+  const docs = {
+    "02": `<section class="content-section homepage-update-document"><div class="document-heading"><p class="eyebrow">HOME PAGE UPDATE</p><h2>首頁功能清單 v1.1</h2><p>以目前首頁實作為基準，將內容、插圖與響應式規則拆成可逐項驗收的功能。</p></div><div class="grid-3 document-card-grid"><div class="card"><span class="card-tag">P0｜內容</span><h3>學習路徑與資訊卡</h3><ul class="document-list"><li>Hero 說明從想法到 Web、Android、iOS 的路徑</li><li>六張系統類型卡各自顯示標題、專屬介紹與透明插圖</li><li>兩張學習入口與三張發布卡保留明確跳轉</li></ul></div><div class="card"><span class="card-tag">P0｜插圖</span><h3>一致的視覺資產</h3><ul class="document-list"><li>吉祥物、流程圖與小圖示維持同一套色彩與 3D 插圖語言</li><li>所有小圖示位於卡片右上角，不遮標題與內文</li><li>圖片有替代文字；載入失敗時仍保留文字與連結</li></ul></div><div class="card"><span class="card-tag">P0｜適配</span><h3>可閱讀的版面</h3><ul class="document-list"><li>卡片高度由內容決定，不保留無意義空白</li><li>桌面三欄、平板雙欄、手機單欄</li><li>圖示依卡片容器縮放，保留文字安全區</li></ul></div></div><div class="document-acceptance"><strong>本階段驗收：</strong>六張卡均有專屬介紹；11 張透明插圖無壞圖；圖示不與文字重疊；窄螢幕不出現橫向捲動。</div></section>`,
+    "03": `<section class="content-section homepage-update-document"><div class="document-heading"><p class="eyebrow">HOME PAGE UPDATE</p><h2>首頁產品需求文件 PRD v1.1</h2><p>定義本次首頁的內容目的、功能邊界與可驗收規則；不把未確認的商業或後端功能混入首頁。</p></div><div class="grid-2 document-card-grid"><div class="card"><span class="card-tag">目標與範圍</span><h3>讓第一次做系統的人看懂下一步</h3><p>首頁需要讓讀者理解學習路徑、選擇可套用的系統方向，並能前往各階段、名詞與手機發布說明。</p><ul class="document-list"><li>範圍：首頁內容、內部導覽、外部原始影片連結</li><li>不包含：帳號、付費、資料收集或系統建置服務</li></ul></div><div class="card"><span class="card-tag">核心規則</span><h3>內容先於裝飾</h3><ul class="document-list"><li>每張卡必須有標題、專屬介紹、圖示與可讀的對比</li><li>流程圖需顯示階段名稱、方向與產物</li><li>吉祥物為單一主角色，各區不超過 3 至 5 個小互動點</li><li>外部連結清楚標示為外部來源</li></ul></div></div><div class="document-acceptance"><strong>正常場景：</strong>讀者可由 Hero、卡片與導覽進入對應教學頁。<br><strong>異常場景：</strong>插圖失敗時仍可讀到替代文字與功能內容；手機版改為單欄，導覽收進選單。</div></section>`,
+    "04": `<section class="content-section homepage-update-document"><div class="document-heading"><p class="eyebrow">HOME PAGE UPDATE</p><h2>首頁互動原型規格 v1.1</h2><p>先確認每一區塊的位置、點擊結果與窄螢幕狀態，再進入 UI 細節。</p></div><div class="prototype-flow"><div>固定導覽<small>學習路線、十階段、名詞、手機 App</small></div><div>Hero CTA<small>進入階段 0／完整路線</small></div><div>系統卡與流程圖<small>閱讀方向與階段連結</small></div><div>學習與發布卡<small>前往說明頁</small></div></div><div class="grid-2 document-card-grid"><div class="card"><span class="card-tag">桌面原型</span><h3>主內容由左至右閱讀</h3><ul class="document-list"><li>Hero 文案在左、流程卡在右</li><li>系統類型與發布路線採三欄</li><li>插圖固定右上，文字由左下延伸</li></ul></div><div class="card"><span class="card-tag">手機原型</span><h3>以單欄維持閱讀順序</h3><ul class="document-list"><li>主導覽收合為可開關選單</li><li>所有卡片改單欄，按鈕維持可點擊高度</li><li>圖示縮放但不可遮住標題、內文或吉祥物臉部</li></ul></div></div><div class="document-acceptance"><strong>互動驗收：</strong>所有 CTA 與卡片連結指向正確頁面；選單可開關；Esc 或取消操作不保留未儲存狀態。</div></section>`,
+    "05": `<section class="content-section homepage-update-document"><div class="document-heading"><p class="eyebrow">HOME PAGE UPDATE</p><h2>首頁 UI 設計規格 v1.1</h2><p>以首頁既有的吉祥物插圖、留白與藍綠色系為唯一基準，讓後續頁面能延續同一套介面語言。</p></div><div class="ui-token-grid"><div class="token-card token-ink"><strong>深藍</strong><small>結構、標題、主要文字</small></div><div class="token-card token-blue"><strong>電藍</strong><small>主要按鈕、流程與互動</small></div><div class="token-card token-teal"><strong>青綠</strong><small>分段、次要狀態與提示</small></div><div class="token-card token-yellow"><strong>金黃</strong><small>靈感、提醒與小互動點</small></div></div><div class="grid-2 document-card-grid"><div class="card"><span class="card-tag">元件規格</span><h3>卡片、按鈕與插圖</h3><ul class="document-list"><li>卡片使用白底、圓角、柔和陰影與內容自適應高度</li><li>圖示採透明 PNG、右上定位、容器比例縮放</li><li>按鈕維持主要藍、次要白、輔助青綠三種層級</li></ul></div><div class="card"><span class="card-tag">響應式規格</span><h3>先確保內容可讀</h3><ul class="document-list"><li>桌面：三欄卡片與完整主導覽</li><li>平板：雙欄卡片，保留圖示與文字安全區</li><li>手機：單欄卡片、導覽收合、文字與按鈕不縮小到難以操作</li></ul></div></div><div class="document-acceptance"><strong>UI 驗收：</strong>文字與背景對比清楚；所有圖片有替代文字；右上圖示不遮內容；桌面、平板、手機的閱讀順序一致。</div></section>`
+  }
+  return docs[stageId] || ""
 }
 
 function stagePage(stage) {
@@ -119,6 +135,7 @@ function stagePage(stage) {
       <section class="content-section"><h2>這一階段要做什麼</h2><p>${stage.summary}，先把內容確認完整，再進入下一階段</p></section>
       <section class="content-section"><h2>含文字流程圖</h2><div class="flow-diagram"><div class="flow-node">準備輸入<small>${stage.input}</small></div><div class="flow-node">交給 AI<small>使用本階段完整提示詞</small></div><div class="flow-node">逐項檢查<small>指出缺漏並要求完整更新</small></div><div class="flow-node">保存產物<small>${stage.output}</small></div></div></section>
       <section class="content-section"><h2>實際操作</h2><div class="step-list">${stage.steps.map(step=>`<div class="step-item">${step}</div>`).join("")}</div></section>
+      ${homepageUpdateDocument(stage.id)}
       <section class="content-section"><h2>這一頁會看到的名詞</h2><div class="term-list">${stage.terms.map(name=>{ const term = findTerm(name); return `<a class="term" href="${term ? `term-${term.slug}.html` : 'glossary.html'}">${name}</a>` }).join("")}</div></section>
       <section class="content-section"><div class="prompt-block"><div class="prompt-head"><div><small>本網站原創內容</small><h3>本階段完整提示詞</h3></div><button class="copy-button" type="button" data-copy-prompt>複製完整提示詞</button></div><pre data-prompt-text>${stage.prompt}</pre></div></section>
       <section class="content-section"><h2>工作台／駕駛艙案例</h2><div class="card"><span class="card-tag">去識別化參考案例</span><h3>${stage.title}如何套用到個人工作台</h3><p>使用今日工作、專案、進度與回顧作為示範資料，AI 只產生草稿，正式決定由使用者確認</p><a class="card-link" href="case.html">查看完整案例 →</a></div></section>
@@ -129,9 +146,11 @@ function stagePage(stage) {
 }
 
 function homePage() {
-  return `${navMarkup()}<main class="page-shell"><section class="hero"><div><p class="eyebrow">AI SYSTEM DEVELOPMENT ACADEMY</p><h1>從模糊想法<br>走到自己的系統</h1><p class="lead">第一次做系統也能從工具準備、需求、功能、PRD、原型一路完成 Web，再分別延伸 Android 與 iOS App</p><div class="button-row"><a class="button button-primary" href="stage-00.html">從階段 0 開始</a><a class="button button-secondary" href="roadmap.html">查看完整路線</a></div></div><div class="hero-board"><img src="${logoPath}" alt="猛禽隼品牌標誌"><h3>一條可以逐步驗收的路</h3><div class="board-flow"><span>先說清楚要做什麼</span><span>再建立完整規格</span><span>完成並驗收 Web</span><span>最後延伸 Android／iOS</span></div></div></section>
-    <section class="section"><div class="section-head"><p class="eyebrow">START HERE</p><h2>你可以開發不同類型的系統</h2><p>工作台與駕駛艙是參考案例，你可以替換成管理系統、教學網站或其他工具</p></div><div class="grid-3">${["個人工作台","管理系統","教學網站","資料整理工具","Android App","iOS App"].map(x=>`<div class="card"><span class="card-tag">可套用</span><h3>${x}</h3><p>使用同一套需求、文件、開發與驗收流程建立自己的版本</p></div>`).join("")}</div></section>
-    <section class="section"><div class="section-head"><p class="eyebrow">MOBILE APP</p><h2>先選簡單安裝，或走商店發布</h2><p>如果只是自己或小範圍使用，可以先把 Web 加入主畫面，需要商店曝光再走 Android／iOS 發布</p></div><div class="grid-3"><div class="platform-card"><div class="platform-symbol">＋</div><h3>網頁加入主畫面</h3><ul><li>不需要先上架商店</li><li>保留同一套 Web</li><li>Android 與 iPhone 都能使用</li><li>最快開始真實使用</li></ul><a class="button button-secondary" href="pwa-install.html">查看加入主畫面</a></div><div class="platform-card"><div class="platform-symbol">A</div><h3>Android／Google Play</h3><ul><li>Android App Bundle</li><li>Play App Signing</li><li>測試軌與資料安全</li><li>正式發布與版本更新</li></ul><a class="button button-primary" href="android-publish.html">查看 Android 原型</a></div><div class="platform-card"><div class="platform-symbol">iOS</div><h3>iPhone／App Store</h3><ul><li>macOS 與 Xcode</li><li>App Store Connect</li><li>TestFlight</li><li>App Review 與正式發布</li></ul><a class="button button-teal" href="ios-publish.html">查看 iOS 原型</a></div></div></section></main>${footerMarkup()}`
+  return `${navMarkup()}<main class="page-shell"><section class="hero"><div><p class="eyebrow">AI SYSTEM DEVELOPMENT ACADEMY</p><h1>從模糊想法<br>走到自己的系統</h1><p class="lead">第一次做系統也能從工具準備、需求、功能、PRD、原型一路完成 Web，再分別延伸 Android 與 iOS App</p><div class="button-row"><a class="button button-primary" href="stage-00.html">從階段 0 開始</a><a class="button button-secondary" href="roadmap.html">查看完整路線</a></div></div><div class="hero-board"><h3>一條可以逐步驗收的路</h3><div class="board-flow"><span>先說清楚要做什麼</span><span>再建立完整規格</span><span>完成並驗收 Web</span><span>最後延伸 Android／iOS</span></div></div></section>
+    <section class="section home-source-section" id="source" aria-labelledby="source-title"><figure class="mascot-thanks" aria-hidden="true"><img src="assets/mascot/falcon-thanks-v4.png" alt=""><span class="thanks-badge thanks-badge-word">謝謝</span><span class="thanks-badge thanks-badge-heart">♥</span><span class="thanks-badge thanks-badge-star">✦</span><span class="thanks-badge thanks-badge-share">分享</span></figure><div class="source-copy"><p class="eyebrow">SOURCE &amp; THANKS</p><h2 id="source-title">謝謝原作者提供這套方法的資訊起點</h2><p class="source-lead">感謝 Daju_ai 在 TikTok 帳號 @daju_shouai 分享《0 基礎做 App 保姆級教程》，讓更多人看見可以運用 AI，從想法開始建立網站與 App。</p><p>本站正在實際驗證這套方式是否能被整理成一套可重複、可逐步驗收的方法。我們希望用它發展更多與日常工作和生活息息相關的網頁系統與 App，從簡單工具，逐步延伸成更龐大、更細緻、可持續成長，而且每天真正用得到的系統。</p><p class="source-boundary"><strong>整理與驗證聲明：</strong>本站依實作結果重新分類、結構化並補充現況驗證；內容不是原影片逐字重製，也不代表原作者替本站全部內容背書。本站不公開完整字幕、不嵌入或備份原始影片。</p><div class="button-row"><a class="button button-secondary" href="https://www.tiktok.com/@daju_shouai/video/7673534003223383317" target="_blank" rel="noopener noreferrer">查看 TikTok 原始影片 ↗</a><a class="button button-primary" href="model-guide.html">查看本站工具與模型驗證</a></div></div></section>
+    <section class="section"><div class="section-head"><p class="eyebrow">START HERE</p><h2>你可以開發不同類型的系統</h2><p>工作台與駕駛艙是參考案例，你可以替換成管理系統、教學網站或其他工具</p></div><div class="grid-3">${[["個人工作台","personal-workbench-v1.png","集中今天待辦、專案進度與筆記，建立自己的工作節奏。"],["管理系統","management-system-v1.png","整理客戶、案件與團隊流程，讓日常管理有一致的追蹤方式。"],["教學網站","teaching-site-v1.png","把課程、教材與學習任務整理成可持續更新的教學網站。"],["資料整理工具","data-organizer-v1.png","匯入、分類與搜尋資料，讓零散資訊變成可查找的工作資產。"],["Android App","android-app-v1.png","把已驗收的 Web 延伸為 Android 體驗，逐步準備測試與發布。"],["iOS App","ios-app-v1.png","規劃 iPhone 使用流程，銜接 TestFlight 與 App Store 的發布準備。"]].map(([x,art,description])=>`<div class="card system-type-card"><img class="card-illustration" src="assets/illustrations/${art}" alt="${x}插圖"><span class="card-tag">可套用</span><h3>${x}</h3><p>${description}</p></div>`).join("")}</div></section>
+    <section class="section"><div class="section-head"><p class="eyebrow">TEXT DIAGRAM</p><h2>先用圖看懂整條開發路線</h2><p>每個節點直接寫出階段名稱、用途與產物，圖片下方另有完整文字版。</p></div>${roadmapVisualFigure(["第一段：開發準備、需求訪談、功能清單、PRD，把需求說清楚。","第二段：互動原型、UI 設計、TRD、開發計畫，把規格變成施工圖。","第三段：Web 開發與測試、驗收與版本、Web 上線，留下證據並正式交付。","每一步的產物都是下一步的輸入；未確認時不要跳到開發或發布。"])}<div class="grid-2 learning-entry-grid"><div class="card learning-entry-card"><img class="card-illustration card-illustration-small" src="assets/illustrations/glossary-v1.png" alt="專有名詞說明插圖"><span class="card-tag">白話解釋</span><h3>看不懂專有名詞？</h3><p>每個名詞都有獨立頁面，說明定義、用途、常見錯誤與相關階段。</p><a class="button button-secondary" href="glossary.html">查看專有名詞</a></div><div class="card learning-entry-card"><img class="card-illustration card-illustration-small" src="assets/illustrations/model-choice-v1.png" alt="模型選擇插圖"><span class="card-tag">工具選擇</span><h3>Agent 和模型差在哪裡？</h3><p>先分清楚操作工具與推理模型，再依任務與權限選擇。</p><a class="button button-primary" href="model-guide.html">查看模型選擇指南</a></div></div></section>
+    <section class="section"><div class="section-head"><p class="eyebrow">MOBILE APP</p><h2>先選簡單安裝，或走商店發布</h2><p>如果只是自己或小範圍使用，可以先把 Web 加入主畫面，需要商店曝光再走 Android／iOS 發布</p></div><div class="grid-3"><div class="platform-card"><img class="platform-illustration" src="assets/illustrations/home-screen-v1.png" alt="加入主畫面插圖"><h3>網頁加入主畫面</h3><ul><li>不需要先上架商店</li><li>保留同一套 Web</li><li>Android 與 iPhone 都能使用</li><li>最快開始真實使用</li></ul><a class="button button-secondary" href="pwa-install.html">查看加入主畫面</a></div><div class="platform-card"><img class="platform-illustration" src="assets/illustrations/android-release-v1.png" alt="Android 發布插圖"><h3>Android／Google Play</h3><ul><li>Android App Bundle</li><li>Play App Signing</li><li>測試軌與資料安全</li><li>正式發布與版本更新</li></ul><a class="button button-primary" href="android-publish.html">查看 Android 原型</a></div><div class="platform-card"><img class="platform-illustration" src="assets/illustrations/ios-release-v1.png" alt="iOS 發布插圖"><h3>iPhone／App Store</h3><ul><li>macOS 與 Xcode</li><li>App Store Connect</li><li>TestFlight</li><li>App Review 與正式發布</li></ul><a class="button button-teal" href="ios-publish.html">查看 iOS 原型</a></div></div></section></main>${footerMarkup()}`
 }
 
 function roadmapPage() {
@@ -204,16 +223,59 @@ function platformPublish(platform) {
     <section class="section"><div class="lesson-nav"><a class="button button-secondary" href="mobile-app.html">← 手機 App 總覽</a><a class="button ${android?'button-teal':'button-primary'}" href="${android?'ios-publish.html':'complete.html'}">${android?'繼續看 iOS →':'完成與作品分享 →'}</a></div></section></main>${footerMarkup()}`
 }
 
+function diagramFigure(src, title, alt, textSteps) {
+  return `<figure class="explanation-figure"><img src="${src}" alt="${alt}"><figcaption><strong>${title}</strong><span>圖中的每個節點都包含名稱與用途文字。</span></figcaption><details class="diagram-text"><summary>閱讀圖解文字版</summary><ol>${textSteps.map(step=>`<li>${step}</li>`).join("")}</ol></details></figure>`
+}
+
+function roadmapVisualFigure(textSteps) {
+  return `<figure class="explanation-figure generated-roadmap-figure"><img src="assets/diagrams/falcon-development-roadmap-v1.png" alt="從想法到可發布系統：先把想法說清楚、再把規格變成施工圖、完成驗收再發布的三段式流程圖"><figcaption><strong>從想法到可發布系統</strong><span>以吉祥物帶領三段式開發流程；每一段均列出階段名稱與方向。</span></figcaption><details class="diagram-text"><summary>閱讀圖解文字版</summary><ol>${textSteps.map(step=>`<li>${step}</li>`).join("")}</ol></details></figure>`
+}
+
+function glossaryPrototype() {
+  const raw = new URLSearchParams(location.search).get("variant")?.toUpperCase()
+  const variant = ["A", "B", "C"].includes(raw) ? raw : "A"
+  const labels = { A: "分類卡片", B: "索引與內容", C: "流程優先" }
+  const termFlow = diagramFigure("assets/diagrams/term-learning-flow.svg", "如何理解一個專有名詞", "遇到名詞後開啟說明頁、理解定義用途錯誤，再返回學習階段的四步驟流程圖", ["遇到不懂的名詞：例如 PRD、API、AI Agent。","開啟名詞說明頁：先看白話定義與出現階段。","比較正確用法與常見錯誤，必要時閱讀等價文字流程。","回到相關階段，把理解套入文件、畫面或測試並留下證據。"])
+  let body = ""
+  if (variant === "A") body = `<div class="section-head"><p class="eyebrow">VARIANT A</p><h2>依階段瀏覽名詞卡片</h2><p>適合第一次進入名詞庫，直接從白話摘要判斷要查看哪一個名詞。</p></div><div class="template-grid">${termCatalog.map(term=>`<article class="card"><span class="card-tag">${term.stage}</span><h3>${term.name}</h3><p>${term.meaning}</p><a class="card-link" href="term-${term.slug}.html">查看名詞說明 →</a></article>`).join("")}</div>`
+  if (variant === "B") {
+    const first = termCatalog[0]
+    body = `<div class="section-head"><p class="eyebrow">VARIANT B</p><h2>左邊找名詞，右邊先看重點</h2><p>適合已經知道名詞名稱，想快速掃描定義與常見錯誤。</p></div><div class="glossary-index-layout"><aside class="glossary-index" aria-label="專有名詞索引">${termCatalog.map(term=>`<a href="term-${term.slug}.html">${term.name}<small>${term.stage}</small></a>`).join("")}</aside><article class="glossary-preview"><span class="card-tag">預覽第一筆</span><h2>${first.name}</h2><p class="lead">${first.meaning}</p><div class="grid-2"><div class="card"><h3>實際用途</h3><p>${first.use}</p></div><div class="card"><h3>常見錯誤</h3><p>${first.mistake}</p></div></div><a class="button button-primary" href="term-${first.slug}.html">開啟完整說明</a></article></div>`
+  }
+  if (variant === "C") {
+    const groups = stages.map(stage => ({
+      stage,
+      terms: termCatalog.filter(term => term.stage.split("與").map(value => value.trim()).includes(`階段 ${Number(stage.id)}`))
+    }))
+    const extras = termCatalog.filter(term=>!/^階段/.test(term.stage))
+    body = `<div class="section-head"><p class="eyebrow">VARIANT C</p><h2>先看開發流程，再找該階段名詞</h2><p>適合正在走十階段流程，想知道目前階段會遇到哪些名詞。</p></div>${diagramFigure("assets/diagrams/development-roadmap.svg", "十一階段開發路線", "從階段零到階段十的完整開發流程圖，每個節點包含名稱用途與產物", ["階段 0 至 3：把需求說清楚。","階段 4 至 7：把規格變成原型、技術文件與開發計畫。","階段 8 至 10：實作、驗收、建立版本並上線。"])}<div class="glossary-stage-groups">${groups.map(({stage,terms})=>`<section id="glossary-stage-${stage.id}" class="stage-term-group"><div><span class="card-tag">階段 ${stage.id}</span><h3>${stage.title}</h3><p>${stage.summary}</p></div><div class="term-list">${terms.map(term=>`<a class="term" href="term-${term.slug}.html">${term.name}</a>`).join("") || '<span class="muted-text">目前沒有獨立名詞頁</span>'}</div></section>`).join("")}${extras.length?`<section class="stage-term-group"><div><span class="card-tag">跨階段</span><h3>工具與社群</h3></div><div class="term-list">${extras.map(term=>`<a class="term" href="term-${term.slug}.html">${term.name}</a>`).join("")}</div></section>`:""}</div>`
+  }
+  return `${termFlow}<section class="content-section">${body}</section><div class="prototype-switcher" data-prototype-switcher data-current-variant="${variant}" aria-label="專有名詞頁原型方案"><button type="button" aria-label="上一個原型方案" data-variant-direction="-1">←</button><strong>${variant}｜${labels[variant]}</strong><button type="button" aria-label="下一個原型方案" data-variant-direction="1">→</button></div>`
+}
+
+function modelGuidePage() {
+  const comparisons = [
+    { type: "AI Agent", name: "Codex", tags: "需求與架構,程式開發與執行,圖片理解", use: "瀏覽儲存庫、編輯檔案、執行指令與測試。", limit: "權限、沙箱、介面與可選模型會影響實際能力。", image: "可使用螢幕截圖或圖表作為工作資料；依當前介面與模型為準。", source: "https://openai.com/codex/", sourceLabel: "Codex 官方資料" },
+    { type: "AI Agent", name: "Claude Code", tags: "需求與架構,程式開發與執行", use: "讀取程式庫、跨檔案修改、執行指令與整合開發工具。", limit: "權限模式、介面與設定會影響實際操作。", image: "圖片能力依使用介面與所選模型而異，需由官方文件核對。", source: "https://docs.anthropic.com/en/docs/claude-code/overview", sourceLabel: "Claude Code 官方資料" },
+    { type: "AI 模型", name: "OpenAI GPT 系列", tags: "需求與架構,原型與 UI,圖片理解", use: "理解文字或圖片、推理、整理規格與產生內容。", limit: "不同型號的速度、推理、上下文與工具能力不同；本頁不自動推薦型號。", image: "是否支援圖片輸入需依所選型號與介面確認。", source: "https://platform.openai.com/docs/models", sourceLabel: "OpenAI 模型官方資料" },
+    { type: "AI 模型", name: "Anthropic Claude 系列", tags: "需求與架構,原型與 UI,圖片理解", use: "理解長文件、圖片與需求脈絡，協助分析及產生內容。", limit: "不同型號與方案的能力、用量及可用工具不同。", image: "是否支援圖片或 PDF 需依所選型號與介面確認。", source: "https://docs.anthropic.com/en/docs/about-claude/models", sourceLabel: "Claude 模型官方資料" }
+  ].map(item => `<article class="model-row" data-model-tags="${item.tags}"><div><span class="card-tag">${item.type}</span><h3>${item.name}</h3></div><p><strong>用途：</strong>${item.use}</p><p><strong>限制：</strong>${item.limit}</p><p><strong>圖片：</strong>${item.image}</p><p><a class="inline-term" href="term-official-source.html">官方來源</a>｜<a href="${item.source}" target="_blank" rel="noopener noreferrer">查看${item.sourceLabel} ↗</a>｜<a class="inline-term" href="term-verification-date.html">最後驗證</a>：2026-09-01</p></article>`).join("")
+  return `${navMarkup()}<main class="page-shell"><section class="page-hero"><p class="breadcrumb"><a href="index.html">首頁</a> ／ 模型選擇指南</p><p class="eyebrow">AGENT &amp; MODEL GUIDE</p><h1>我該選哪個 AI 工具與模型？</h1><p class="lead">先分清楚「在哪裡操作」與「由哪個模型理解」，再依任務、權限、限制與官方資料做決定。</p></section>
+    <section class="section">${diagramFigure("assets/diagrams/agent-model-relationship.svg", "AI Agent、模型與專案環境的關係", "使用者任務交給 AI Agent，Agent 呼叫模型理解並在權限範圍操作檔案終端瀏覽器，產物回到使用者確認的關係圖", ["使用者說明目標、限制與資料，並決定是否接受結果。","AI Agent 管理工具、上下文與操作流程；可做的事受權限限制。","AI 模型負責理解文字或圖片、推理與生成，本身不等於取得檔案或終端權限。","專案環境包含檔案、終端機、瀏覽器與外部工具；敏感操作仍需人工核准。","產物與證據回到使用者，由使用者確認、要求修正或進入下一步。"])}</section>
+    <section class="section"><div class="grid-2"><article class="card"><span class="card-tag">操作工具</span><h2><a class="inline-term" href="term-ai-assistant.html">AI Agent｜查看名詞說明</a></h2><p>你實際操作的工具或執行環境，負責管理檔案、終端機、瀏覽器與權限。</p></article><article class="card"><span class="card-tag">推理核心</span><h2><a class="inline-term" href="term-language-model.html">AI 模型｜查看名詞說明</a></h2><p>負責理解、推理與生成；實際能不能改檔或跑程式，仍要看 Agent 的工具與權限。</p></article></div></section>
+    <section class="section"><div class="section-head"><h2>依任務查看已驗證資料</h2><p>按鈕只篩選頁面內容，不會呼叫 API，也不會替你自動決定。</p></div><div class="task-tabs" role="group" aria-label="任務分類"><button class="active" type="button" data-model-task="需求與架構">需求與架構</button><button type="button" data-model-task="原型與 UI">原型與 UI</button><button type="button" data-model-task="程式開發與執行">程式開發與執行</button><button type="button" data-model-task="圖片理解">圖片理解</button></div><div class="model-compare" data-model-table>${comparisons}</div><p class="policy-note" data-model-empty hidden>目前沒有符合條件且已完成官方資料驗證的項目。</p></section>
+    <section class="section"><div class="lesson-nav"><a class="button button-secondary" href="index.html#source">← 查看首頁來源與致謝區</a><a class="button button-primary" href="glossary.html">查看專有名詞 →</a></div></section></main>${footerMarkup()}`
+}
+
 function staticPage(config) {
   let content = ""
   if (config.type === "prompts") content = `<div class="grid-2">${stages.map(s=>`<div class="card"><span class="card-tag">階段 ${s.id}</span><h3>${s.title}</h3><p>${s.summary}</p><a class="card-link" href="${s.slug}#prompt">查看並複製 →</a></div>`).join("")}</div>`
   if (config.type === "templates") content = `<div class="template-grid">${["需求文件","功能清單","PRD","原型規格","UI 規格","TRD","開發計畫","驗收報告","版本紀錄"].map(x=>`<div class="card"><span class="card-tag">Markdown</span><h3>${x}</h3><p>提供去識別化完成範例與空白結構</p><button class="button button-secondary" type="button" data-demo-download="${x}">下載空白模板</button></div>`).join("")}</div>`
-  if (config.type === "glossary") content = `<div class="template-grid">${termCatalog.map(term=>`<article class="card"><span class="card-tag">${term.stage}</span><h3>${term.name}</h3><p>${term.meaning}</p><a class="card-link" href="term-${term.slug}.html">查看名詞說明 →</a></article>`).join("")}</div>`
+  if (config.type === "glossary") content = glossaryPrototype()
   if (config.type === "safety") content = `<div class="grid-2"><div class="card"><h3>不要交給 AI</h3><ul><li>密碼與 API 金鑰</li><li>個資與公司機密</li><li>未公開合約與內部資料</li></ul></div><div class="card"><h3>公開前要檢查</h3><ul><li>截圖是否有真實姓名</li><li>網址是否包含內部主機</li><li>程式是否含 Token</li></ul></div></div>`
   if (config.type === "faq") content = `<div class="faq-list">${["AI 只更新局部內容怎麼辦","提示詞複製後要貼到哪裡","文件互相衝突怎麼辦","Web 驗收後如何做 Android","iOS 為什麼需要 macOS","GitHub Discussions 收到作品怎麼處理"].map(q=>`<details><summary>${q}</summary><p>依對應階段重新檢查輸入與產物，缺少證據時標記待確認，不直接宣稱完成</p></details>`).join("")}</div>`
   if (config.type === "complete") content = `<div class="grid-2"><div class="card"><span class="card-tag">作品分享</span><h3>分享作品截圖或連結</h3><p>可以只放截圖、只放作品連結，或同時分享兩者</p><button class="button button-primary" type="button" data-share-open>分享作品</button></div><div class="card"><span class="card-tag">學習心得</span><h3>記錄你怎麼完成系統</h3><p>分享遇到的問題、解決方式與下一版計畫</p><button class="button button-secondary" type="button" data-share-open>分享學習心得</button></div></div>`
   if (config.type === "maintainer") content = `<div class="step-list">${["確認圖片與作品連結能開啟","檢查是否包含敏感資料","使用固定文案感謝分享","分類錯誤時移到正確分類","違規或洩密時關閉或刪除"].map(x=>`<div class="step-item">${x}</div>`).join("")}</div><section class="content-section"><h2>固定回覆文案</h2><div class="prompt-block"><pre>謝謝分享，你已完成自己的第一個系統，也歡迎補充後續更新與使用心得</pre></div></section><section class="content-section"><h2>什麼時候才要置頂</h2><p>第一版不要求你立即學會置頂，作品內容完整、安全且對其他學習者有幫助時再使用</p><a class="button button-secondary" href="https://docs.github.com/en/discussions/managing-discussions-for-your-community/managing-discussions" target="_blank" rel="noreferrer">查看 GitHub 官方操作 ↗</a></section>`
-  if (config.type === "credits") content = `<div class="card"><span class="card-tag">感謝公開分享</span><h3>Daju_ai</h3><p>TikTok 帳號 @daju_shouai</p><p>本站受到公開分享的 AI 開發流程啟發，再重新驗證並製作成原創繁體中文教材，不轉載影片、逐字稿或對方完整提示詞，也不暗示原作者參與本站製作</p><a class="button button-secondary" href="https://www.tiktok.com/@daju_shouai/video/7673534003223383317" target="_blank" rel="noreferrer">查看 TikTok 原始影片 ↗</a></div>`
   if (config.type === "case") content = `<div class="flow-diagram"><div class="flow-node">每天記錄<small>工作、專案與生活</small></div><div class="flow-node">長期使用<small>找出重複與卡關</small></div><div class="flow-node">加入 AI<small>整理、規劃、分析與提醒</small></div><div class="flow-node">使用者決定<small>像主管一樣下達指示</small></div></div><section class="section"><div class="grid-2"><div class="card"><h3>AI 個人工作台</h3><p>AI 協助設計每天可以記錄生活或工作的系統</p></div><div class="card"><h3>AI 個人駕駛艙</h3><p>使用一段時間後，再加入 AI 自動整理、規劃、分析與提醒</p></div></div></section>`
   return `${navMarkup()}<main class="page-shell"><section class="page-hero"><p class="eyebrow">LEARNING RESOURCE</p><h1>${config.title}</h1><p class="lead">${config.lead}</p></section><section class="section">${content}</section></main>${footerMarkup()}`
 }
@@ -224,11 +286,13 @@ function progressPage() {
 
 function termPage(slug) {
   const term = termCatalog.find(item => item.slug === slug) || termCatalog[0]
+  const stageNumber = term.stage.match(/階段 (\d+)/)?.[1]
+  const relatedStage = stageNumber === undefined ? "roadmap.html" : `stage-${String(stageNumber).padStart(2, "0")}.html`
   return `${navMarkup()}<main class="page-shell"><section class="page-hero"><p class="breadcrumb"><a href="glossary.html">專有名詞總覽</a> ／ ${term.name}</p><p class="eyebrow">GLOSSARY</p><h1>${term.name}</h1><p class="lead">用白話了解這個名詞在系統開發中的用途與使用方式</p></section>
-    <section class="section"><div class="grid-2"><article class="card"><span class="card-tag">白話定義</span><h2>${term.name}是什麼</h2><p>${term.meaning}</p></article><article class="card"><span class="card-tag">出現階段</span><h2>${term.stage}</h2><p>回到學習路線時，依照這個階段的文件與操作一起理解</p></article></div></section>
-    <section class="section"><div class="section-head"><h2>怎麼使用</h2></div><div class="flow-diagram"><div class="flow-node">先理解目的<small>${term.meaning}</small></div><div class="flow-node">放回流程<small>${term.stage}</small></div><div class="flow-node">實際套用<small>${term.use}</small></div><div class="flow-node">留下證據<small>用文件、畫面或測試確認結果</small></div></div></section>
+    <section class="section"><div class="grid-2"><article class="card"><span class="card-tag">白話定義</span><h2>${term.name}是什麼</h2><p>${term.meaning}</p></article><article class="card"><span class="card-tag">出現階段</span><h2>${term.stage}</h2><p>回到學習路線時，依照這個階段的文件與操作一起理解。</p><a class="card-link" href="${relatedStage}">查看相關學習階段 →</a></article></div></section>
+    <section class="section"><div class="section-head"><h2>怎麼使用這個名詞</h2><p>圖中每一步都有文字；下方還能展開完全相同的文字流程。</p></div>${diagramFigure("assets/diagrams/term-learning-flow.svg", `${term.name}的理解與使用流程`, `從遇到${term.name}、開啟說明、比較用法錯誤到返回相關階段的四步驟流程圖`, [`遇到「${term.name}」：先不要猜意思，從教材中的名詞連結進入本頁。`,`閱讀白話定義並確認它出現在「${term.stage}」。`,`正確用法：${term.use}`,`常見錯誤：${term.mistake}`,"回到相關階段，用文件、畫面或測試留下可驗收證據。"])} </section>
     <section class="section"><div class="grid-2"><article class="card"><span class="card-tag">正確使用</span><h2>實際做法</h2><p>${term.use}</p></article><article class="card"><span class="card-tag">常見錯誤</span><h2>避免這樣做</h2><p>${term.mistake}</p></article></div></section>
-    <section class="section"><div class="lesson-nav"><a class="button button-secondary" href="glossary.html">← 回到名詞總覽</a><a class="button button-primary" href="roadmap.html">查看完整學習路線 →</a></div></section></main>${footerMarkup()}`
+    <section class="section"><div class="lesson-nav"><a class="button button-secondary" href="glossary.html">← 回到名詞總覽</a><a class="button button-primary" href="${relatedStage}">查看相關學習階段 →</a></div></section></main>${footerMarkup()}`
 }
 
 function render() {
@@ -239,6 +303,7 @@ function render() {
   if (page === "android") return platformPublish("android")
   if (page === "ios") return platformPublish("ios")
   if (page === "progress") return progressPage()
+  if (page === "model-guide") return modelGuidePage()
   if (page === "term") return termPage(document.body.dataset.termSlug)
   if (page.startsWith("stage-")) {
     const id = page.split("-")[1]
@@ -248,6 +313,41 @@ function render() {
 }
 
 document.getElementById("app").innerHTML = render()
+
+const mascotProfiles = {
+  idea: { src: "assets/mascot/falcon-idea-v1.png", symbols: ["✦", "◌", "⌁", "＋"], bulb: true },
+  code: { src: "assets/mascot/falcon-code-v1.png", symbols: ["&lt;/&gt;", "⌘", "⌁", "＋"] },
+  verify: { src: "assets/mascot/falcon-verify-v1.png", symbols: ["✓", "◎", "⌁", "＋"] },
+  celebrate: { src: "assets/mascot/falcon-celebrate-v1.png", symbols: ["✓", "✦", "✦", "＋"] }
+}
+
+function mascotProfileForPage() {
+  if (["complete", "android", "ios"].includes(page)) return mascotProfiles.celebrate
+  if (["progress", "pwa", "stage-08", "stage-09", "stage-10"].includes(page)) return mascotProfiles.verify
+  if (["mobile", "model-guide", "templates", "stage-04", "stage-05", "stage-06", "stage-07"].includes(page)) return mascotProfiles.code
+  return mascotProfiles.idea
+}
+
+function mascotHeroMarkup(profile, compact = false) {
+  return `<figure class="mascot-hero ${compact ? "mascot-hero-compact" : ""}" aria-hidden="true">
+    <div class="mascot-orbit mascot-orbit-one"></div><div class="mascot-orbit mascot-orbit-two"></div>
+    <img src="${profile.src}" alt="">
+    ${profile.bulb ? '<span class="mascot-bulb">💡</span>' : ""}
+    <div class="mascot-interactions">${profile.symbols.map((symbol, index) => `<span class="mascot-symbol mascot-symbol-${index + 1}">${symbol}</span>`).join("")}</div>
+  </figure>`
+}
+
+const activeMascotProfile = mascotProfileForPage()
+const pageHero = document.querySelector(".page-hero")
+if (pageHero) {
+  pageHero.classList.add("with-mascot-hero")
+  pageHero.insertAdjacentHTML("beforeend", mascotHeroMarkup(activeMascotProfile))
+}
+const homeHeroBoard = document.querySelector(".hero-board")
+if (homeHeroBoard) {
+  homeHeroBoard.classList.add("with-mascot-board")
+  homeHeroBoard.insertAdjacentHTML("afterbegin", mascotHeroMarkup(mascotProfiles.idea, true))
+}
 
 const progressKey = "academyPrototypeProgressV1"
 const loadProgress = () => { try { return JSON.parse(localStorage.getItem(progressKey) || "{}") } catch { return {} } }
@@ -261,6 +361,52 @@ document.querySelector("[data-menu-open]")?.addEventListener("click", () => {
 const closeMenu = () => { document.querySelector("[data-mobile-drawer]")?.classList.remove("open"); document.querySelector("[data-drawer-backdrop]")?.classList.remove("open") }
 document.querySelector("[data-menu-close]")?.addEventListener("click", closeMenu)
 document.querySelector("[data-drawer-backdrop]")?.addEventListener("click", closeMenu)
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && document.querySelector("[data-mobile-drawer]")?.classList.contains("open")) {
+    closeMenu()
+    document.querySelector("[data-menu-open]")?.focus()
+  }
+})
+
+const prototypeSwitcher = document.querySelector("[data-prototype-switcher]")
+if (prototypeSwitcher) {
+  const variants = ["A", "B", "C"]
+  const current = prototypeSwitcher.dataset.currentVariant || "A"
+  const moveVariant = direction => {
+    const next = variants[(variants.indexOf(current) + direction + variants.length) % variants.length]
+    const url = new URL(location.href)
+    url.searchParams.set("variant", next)
+    location.href = url.toString()
+  }
+  prototypeSwitcher.querySelectorAll("[data-variant-direction]").forEach(button => button.addEventListener("click", () => moveVariant(Number(button.dataset.variantDirection))))
+  document.addEventListener("keydown", event => {
+    const target = event.target
+    if (target instanceof HTMLElement && (target.matches("input, textarea, [contenteditable='true']") || target.isContentEditable)) return
+    if (event.key === "ArrowLeft") moveVariant(-1)
+    if (event.key === "ArrowRight") moveVariant(1)
+  })
+}
+
+const modelTaskButtons = [...document.querySelectorAll("[data-model-task]")]
+if (modelTaskButtons.length) {
+  const filterModels = task => {
+    let visible = 0
+    document.querySelectorAll("[data-model-tags]").forEach(row => {
+      const show = row.dataset.modelTags.split(",").includes(task)
+      row.hidden = !show
+      if (show) visible += 1
+    })
+    const empty = document.querySelector("[data-model-empty]")
+    if (empty) empty.hidden = visible > 0
+    modelTaskButtons.forEach(button => {
+      const active = button.dataset.modelTask === task
+      button.classList.toggle("active", active)
+      button.setAttribute("aria-pressed", String(active))
+    })
+  }
+  modelTaskButtons.forEach(button => button.addEventListener("click", () => filterModels(button.dataset.modelTask)))
+  filterModels(modelTaskButtons[0].dataset.modelTask)
+}
 
 document.querySelector("[data-copy-prompt]")?.addEventListener("click", async () => {
   const text = document.querySelector("[data-prompt-text]")?.textContent || ""
