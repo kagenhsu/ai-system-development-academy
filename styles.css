@@ -577,3 +577,9 @@ a.system-type-card .card-link { display: block; margin-top: 16px; }
 .model-comparison-table tbody tr:nth-child(even) { background:#f6fafc; }
 .model-comparison-table tr[hidden] { display:none; }
 .model-table-scroll:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+
+.model-comparison-table [data-model-tags][hidden] { display:none; }
+.model-comparison-table { min-width:1000px; }
+.model-comparison-table tbody th { min-width:110px; width:110px; position:sticky; left:0; background:#edf4fc; z-index:1; }
+.model-comparison-table thead th:first-child { position:sticky; left:0; z-index:2; }
+.model-comparison-table td, .model-comparison-table thead th:not(:first-child) { min-width:210px; }
