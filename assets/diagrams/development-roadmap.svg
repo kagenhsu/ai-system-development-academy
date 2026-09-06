@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 760" role="img" aria-labelledby="title desc">
+  <title id="title">從想法到公開發布的十一階段開發路線</title>
+  <desc id="desc">流程由開發準備開始，依序經過需求訪談、功能清單、PRD、互動原型、UI 設計、TRD、開發計畫、Web 開發與測試、驗收與版本、Web 上線，最後得到可驗收且可維護的系統。</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1e293b" stroke-width=".5"/></pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#60a5fa"/></marker>
+    <style>
+      text{font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif}.title{font-size:24px;font-weight:700;fill:#f8fafc}.sub{font-size:12px;fill:#94a3b8}.phase{font-size:12px;font-weight:700;fill:#fbbf24}.name{font-size:14px;font-weight:700;fill:#f8fafc}.note{font-size:10px;fill:#cbd5e1}.arrow-label{font-size:10px;font-weight:700;fill:#93c5fd}
+    </style>
+  </defs>
+  <rect width="1160" height="760" fill="#0f172a"/><rect width="1160" height="760" fill="url(#grid)"/>
+  <text x="36" y="42" font-family="Arial Unicode MS" font-size="24" font-weight="700" fill="#f8fafc">從想法到可發布系統</text>
+  <text x="36" y="65" font-family="Arial Unicode MS" font-size="12" fill="#94a3b8">每一步都先留下文件或證據，再進入下一步；不是一次叫 AI 把整個系統做完。</text>
+
+  <rect x="30" y="92" width="1100" height="176" rx="14" fill="none" stroke="#fbbf24" stroke-dasharray="8 4"/>
+  <text x="48" y="116" font-family="Arial Unicode MS" font-size="12" font-weight="700" fill="#fbbf24">第一段｜把需求說清楚</text>
+  <path d="M280 186H324M550 186H594M820 186H864" stroke="#60a5fa" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M1000 232V292H160V328" stroke="#60a5fa" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="286" y="176" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#93c5fd">留下輸入</text><text x="556" y="176" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#93c5fd">拆成功能</text><text x="826" y="176" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#93c5fd">寫成規則</text>
+  <g>
+    <rect x="54" y="138" width="226" height="94" rx="9" fill="#0f172a"/><rect x="54" y="138" width="226" height="94" rx="9" fill="rgba(59,130,246,.28)" stroke="#60a5fa" stroke-width="1.5"/>
+    <text x="167" y="170" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">00｜開發準備</text><text x="167" y="193" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">選工具、模型與工作空間</text><text x="167" y="211" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">先排除密碼與機密資料</text>
+  </g>
+  <g>
+    <rect x="324" y="138" width="226" height="94" rx="9" fill="#0f172a"/><rect x="324" y="138" width="226" height="94" rx="9" fill="rgba(8,51,68,.55)" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="437" y="170" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">01｜需求訪談</text><text x="437" y="193" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">確認使用者、痛點與場景</text><text x="437" y="211" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">產物：需求文件</text>
+  </g>
+  <g>
+    <rect x="594" y="138" width="226" height="94" rx="9" fill="#0f172a"/><rect x="594" y="138" width="226" height="94" rx="9" fill="rgba(6,78,59,.45)" stroke="#34d399" stroke-width="1.5"/>
+    <text x="707" y="170" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">02｜功能清單</text><text x="707" y="193" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">依模組、功能、子功能拆解</text><text x="707" y="211" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">產物：P0／P1／P2 清單</text>
+  </g>
+  <g>
+    <rect x="864" y="138" width="226" height="94" rx="9" fill="#0f172a"/><rect x="864" y="138" width="226" height="94" rx="9" fill="rgba(76,29,149,.45)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="977" y="170" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">03｜PRD</text><text x="977" y="193" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">定義流程、規則與異常</text><text x="977" y="211" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">產物：可評審產品文件</text>
+  </g>
+
+  <rect x="30" y="292" width="1100" height="176" rx="14" fill="none" stroke="#fbbf24" stroke-dasharray="8 4"/>
+  <text x="48" y="316" font-family="Arial Unicode MS" font-size="12" font-weight="700" fill="#fbbf24">第二段｜把規格變成施工圖</text>
+  <path d="M280 386H324M550 386H594M820 386H864" stroke="#60a5fa" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M1000 432V492H160V528" stroke="#60a5fa" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="286" y="376" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#93c5fd">確認畫面</text><text x="556" y="376" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#93c5fd">定義實作</text><text x="826" y="376" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#93c5fd">安排順序</text>
+  <g>
+    <rect x="54" y="338" width="226" height="94" rx="9" fill="#0f172a"/><rect x="54" y="338" width="226" height="94" rx="9" fill="rgba(8,51,68,.55)" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="167" y="370" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">04｜互動原型</text><text x="167" y="393" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">確認頁面、元件與操作結果</text><text x="167" y="411" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">先確認結構，不做美化</text>
+  </g>
+  <g>
+    <rect x="324" y="338" width="226" height="94" rx="9" fill="#0f172a"/><rect x="324" y="338" width="226" height="94" rx="9" fill="rgba(6,78,59,.45)" stroke="#34d399" stroke-width="1.5"/>
+    <text x="437" y="370" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">05｜UI 設計</text><text x="437" y="393" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">定義資訊層級與元件狀態</text><text x="437" y="411" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">補齊桌面與手機畫面</text>
+  </g>
+  <g>
+    <rect x="594" y="338" width="226" height="94" rx="9" fill="#0f172a"/><rect x="594" y="338" width="226" height="94" rx="9" fill="rgba(76,29,149,.45)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="707" y="370" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">06｜TRD</text><text x="707" y="393" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">前端、後端、資料與 API</text><text x="707" y="411" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">產物：技術施工文件</text>
+  </g>
+  <g>
+    <rect x="864" y="338" width="226" height="94" rx="9" fill="#0f172a"/><rect x="864" y="338" width="226" height="94" rx="9" fill="rgba(120,53,15,.4)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="977" y="370" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">07｜開發計畫</text><text x="977" y="393" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">拆里程碑、依賴與垂直切片</text><text x="977" y="411" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">每項工作都有驗收條件</text>
+  </g>
+
+  <rect x="30" y="492" width="1100" height="220" rx="14" fill="none" stroke="#fbbf24" stroke-dasharray="8 4"/>
+  <text x="48" y="516" font-family="Arial Unicode MS" font-size="12" font-weight="700" fill="#fbbf24">第三段｜實作、驗收與發布</text>
+  <path d="M280 596H324M550 596H594M820 596H864" stroke="#60a5fa" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="286" y="586" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#93c5fd">留下證據</text><text x="556" y="586" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#93c5fd">建立版本</text><text x="826" y="586" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#93c5fd">正式交付</text>
+  <g>
+    <rect x="54" y="548" width="226" height="96" rx="9" fill="#0f172a"/><rect x="54" y="548" width="226" height="96" rx="9" fill="rgba(8,51,68,.55)" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="167" y="580" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">08｜Web 開發與測試</text><text x="167" y="603" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">一次完成一個可操作切片</text><text x="167" y="621" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">同步完成程式與測試</text>
+  </g>
+  <g>
+    <rect x="324" y="548" width="226" height="96" rx="9" fill="#0f172a"/><rect x="324" y="548" width="226" height="96" rx="9" fill="rgba(6,78,59,.45)" stroke="#34d399" stroke-width="1.5"/>
+    <text x="437" y="580" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">09｜驗收與版本</text><text x="437" y="603" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">用畫面與測試判斷完成</text><text x="437" y="621" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">保存可追蹤版本</text>
+  </g>
+  <g>
+    <rect x="594" y="548" width="226" height="96" rx="9" fill="#0f172a"/><rect x="594" y="548" width="226" height="96" rx="9" fill="rgba(76,29,149,.45)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="707" y="580" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">10｜Web 上線</text><text x="707" y="603" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">發布 HTTPS 網址並實測</text><text x="707" y="621" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">準備備份與失敗回復</text>
+  </g>
+  <g>
+    <rect x="864" y="548" width="226" height="96" rx="24" fill="#0f172a"/><rect x="864" y="548" width="226" height="96" rx="24" fill="rgba(59,130,246,.28)" stroke="#60a5fa" stroke-width="2"/>
+    <text x="977" y="580" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">可驗收的系統</text><text x="977" y="603" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">能操作、能說明、能維護</text><text x="977" y="621" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">未確認內容仍標記待確認</text>
+  </g>
+  <text x="36" y="742" font-family="Arial Unicode MS" font-size="12" fill="#94a3b8">閱讀原則：每一步的產物，都是下一步的輸入；若內容尚未確認，就不要跳到開發或發布。</text>
+</svg>

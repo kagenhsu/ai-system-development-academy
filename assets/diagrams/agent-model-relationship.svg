@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 610" role="img" aria-labelledby="title desc">
+  <title id="title">AI Agent、AI 模型與專案環境的關係</title>
+  <desc id="desc">使用者先說明任務，AI Agent 負責操作工具與權限，AI 模型負責理解與推理，專案環境提供檔案、終端機、瀏覽器與測試，產物最後回到使用者人工確認。</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1e293b" stroke-width=".5"/></pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#64748b"/></marker>
+    <marker id="arrow-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#22d3ee"/></marker>
+    <style>text{font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif}.title{font-size:24px;font-weight:700;fill:#f8fafc}.sub{font-size:12px;fill:#94a3b8}.name{font-size:16px;font-weight:700;fill:#f8fafc}.note{font-size:11px;fill:#cbd5e1}.label{font-size:10px;font-weight:700;fill:#94a3b8}.region{font-size:11px;font-weight:700;fill:#fbbf24}</style>
+  </defs>
+  <rect width="1080" height="610" fill="#0f172a"/><rect width="1080" height="610" fill="url(#grid)"/>
+  <text x="34" y="42" font-family="Arial Unicode MS" font-size="24" font-weight="700" fill="#f8fafc">AI Agent 與 AI 模型不是同一件事</text>
+  <text x="34" y="65" font-family="Arial Unicode MS" font-size="12" fill="#94a3b8">模型負責理解與推理；Agent 負責在權限範圍內把推理轉成檔案、指令、瀏覽器或測試操作。</text>
+
+  <rect x="42" y="112" width="210" height="112" rx="12" fill="#0f172a"/><rect x="42" y="112" width="210" height="112" rx="12" fill="rgba(59,130,246,.28)" stroke="#60a5fa" stroke-width="1.8"/>
+  <text x="147" y="148" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">使用者任務</text><text x="147" y="174" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">說明目標、限制與資料</text><text x="147" y="194" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">決定是否接受最後結果</text>
+
+  <rect x="326" y="94" width="300" height="164" rx="14" fill="none" stroke="#fbbf24" stroke-dasharray="8 4"/>
+  <text x="344" y="116" font-family="Arial Unicode MS" font-size="11" font-weight="700" fill="#fbbf24">操作層｜你實際使用的 AI 工具</text>
+  <rect x="350" y="132" width="252" height="98" rx="10" fill="#0f172a"/><rect x="350" y="132" width="252" height="98" rx="10" fill="rgba(8,51,68,.55)" stroke="#22d3ee" stroke-width="1.8"/>
+  <text x="476" y="164" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">AI Agent</text><text x="476" y="188" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">管理工具、上下文與操作流程</text><text x="476" y="207" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">依權限讀檔、改檔、執行或瀏覽</text>
+
+  <rect x="350" y="322" width="252" height="104" rx="10" fill="#0f172a"/><rect x="350" y="322" width="252" height="104" rx="10" fill="rgba(76,29,149,.45)" stroke="#a78bfa" stroke-width="1.8"/>
+  <text x="476" y="355" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">AI 模型</text><text x="476" y="379" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">理解文字或圖片、推理與生成</text><text x="476" y="398" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">本身不等於已取得檔案或終端權限</text>
+
+  <rect x="700" y="94" width="334" height="332" rx="14" fill="none" stroke="#34d399" stroke-dasharray="8 4"/>
+  <text x="718" y="116" font-family="Arial Unicode MS" font-size="11" font-weight="700" fill="#34d399">專案環境｜Agent 取得授權後可操作</text>
+  <g><rect x="730" y="142" width="126" height="84" rx="9" fill="#0f172a"/><rect x="730" y="142" width="126" height="84" rx="9" fill="rgba(6,78,59,.45)" stroke="#34d399"/><text x="793" y="174" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">檔案</text><text x="793" y="198" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">讀取／修改</text></g>
+  <g><rect x="878" y="142" width="126" height="84" rx="9" fill="#0f172a"/><rect x="878" y="142" width="126" height="84" rx="9" fill="rgba(6,78,59,.45)" stroke="#34d399"/><text x="941" y="174" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">終端機</text><text x="941" y="198" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">指令／測試</text></g>
+  <g><rect x="730" y="252" width="126" height="84" rx="9" fill="#0f172a"/><rect x="730" y="252" width="126" height="84" rx="9" fill="rgba(6,78,59,.45)" stroke="#34d399"/><text x="793" y="284" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">瀏覽器</text><text x="793" y="308" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">預覽／操作</text></g>
+  <g><rect x="878" y="252" width="126" height="84" rx="9" fill="#0f172a"/><rect x="878" y="252" width="126" height="84" rx="9" fill="rgba(6,78,59,.45)" stroke="#34d399"/><text x="941" y="284" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">外部工具</text><text x="941" y="308" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">MCP／API</text></g>
+  <rect x="730" y="358" width="274" height="44" rx="8" fill="rgba(136,19,55,.35)" stroke="#fb7185"/>
+  <text x="867" y="378" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">安全邊界：敏感操作仍要人工核准</text><text x="867" y="394" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">權限與環境會限制 Agent 實際能做的事</text>
+
+  <rect x="326" y="492" width="300" height="82" rx="24" fill="#0f172a"/><rect x="326" y="492" width="300" height="82" rx="24" fill="rgba(59,130,246,.28)" stroke="#60a5fa" stroke-width="2"/>
+  <text x="476" y="524" font-family="Arial Unicode MS" font-size="15" font-weight="700" fill="#f8fafc" text-anchor="middle">產物與證據</text><text x="476" y="548" font-family="Arial Unicode MS" font-size="10" fill="#cbd5e1" text-anchor="middle">文件、程式、畫面、測試結果與待確認事項</text>
+
+  <path d="M252 168H350" stroke="#22d3ee" stroke-width="2" fill="none" marker-end="url(#arrow-cyan)"/><text x="272" y="158" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#94a3b8">交付任務</text>
+  <path d="M476 230V322" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)"/><text x="486" y="281" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#94a3b8">請模型理解與推理</text>
+  <path d="M602 181H700" stroke="#22d3ee" stroke-width="2" fill="none" marker-end="url(#arrow-cyan)"/><text x="620" y="171" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#94a3b8">依權限操作</text>
+  <path d="M867 426V458H626V508" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)"/><text x="714" y="450" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#94a3b8">回傳操作結果</text>
+  <path d="M326 533H147V224" stroke="#60a5fa" stroke-width="2" fill="none" marker-end="url(#arrow-cyan)"/><text x="156" y="516" font-family="Arial Unicode MS" font-size="10" font-weight="700" fill="#94a3b8">人工確認、要求修正或進入下一步</text>
+  <text x="34" y="594" font-family="Arial Unicode MS" font-size="12" fill="#94a3b8">選工具時要分開確認：模型會不會理解，以及 Agent 能不能在你的環境安全地執行。</text>
+</svg>
