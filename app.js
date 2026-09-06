@@ -16,7 +16,7 @@ const stages = [
 ]
 
 const termCatalog = [
-  { slug: "ai-assistant", name: "AI 助手", aliases: ["AI Agent", "Agent"], stage: "階段 0", meaning: "能理解指令，並在授權範圍內協助讀檔、寫檔、看圖、執行與整理工作的開發工具", use: "依任務能力與資料安全需求選擇工具，再開啟正確的專案資料夾", mistake: "只比較模型名稱，卻沒有確認 Agent 能否操作本機專案" },
+  { slug: "ai-assistant", name: "AI 助手", aliases: ["AI Agent", "Agent"], stage: "階段 0", meaning: "能依照你的指令協助問答、整理資訊與產生內容的 AI 工具；其中具備工具與權限的 Agent，還能讀寫專案或執行測試。不是每個 AI 助手都能操作電腦。", use: "依任務能力與資料安全需求選擇工具，再開啟正確的專案資料夾", mistake: "只比較模型名稱，卻沒有確認 Agent 能否操作本機專案" },
   { slug: "language-model", name: "大模型", aliases: ["AI 模型", "模型"], stage: "階段 0", meaning: "AI Agent 用來理解文字、圖片、推理與產生內容的核心模型", use: "先確認任務需要的理解與推理能力，再確認承載模型的 Agent 有哪些操作權限", mistake: "把模型名稱直接當成工具能力，忽略 Agent 權限、介面與執行環境" },
   { slug: "token", name: "Token", stage: "階段 0", meaning: "模型計算輸入與輸出內容用量的基本單位", use: "用來估算長文件、對話與程式開發可能消耗的模型用量", mistake: "把 Token 直接等同固定字數，忽略語言與模型計算方式不同" },
   { slug: "workspace", name: "工作空間", stage: "階段 0", meaning: "AI 助手目前允許讀取與修改的專案資料夾範圍", use: "每個系統建立獨立資料夾，開始新任務前確認開啟正確位置", mistake: "同時混入私人資料、公司資料與其他專案檔案" },
@@ -932,7 +932,25 @@ function progressPage() {
   return `${navMarkup()}<main class="page-shell"><section class="page-hero"><p class="eyebrow">LOCAL PROGRESS</p><h1>匿名學習進度</h1><p class="lead">只保存完成哪些階段，不保存姓名、文件、截圖或作品</p></section><section class="section"><div class="route-list">${stages.map(s=>`<div class="route-item" data-progress-row="${s.id}"><div class="route-number">${s.id}</div><div><h3>${s.title}</h3><p data-progress-label>尚未完成</p></div><a class="button button-secondary" href="${s.slug}">查看階段</a></div>`).join("")}</div><div class="button-row"><button class="button button-secondary" type="button" data-reset-progress>清除匿名進度</button></div></section></main>${footerMarkup()}`
 }
 
+function aiAssistantLesson() {
+  const prompt = `我想做一個個人工作台，把今日工作、專案與每日回顧放在一起。
+請先用一問一答幫我釐清需求，每次只問一題，不開始寫程式。
+先確認誰使用、最常遇到的問題、第一版需要與不需要的功能。
+如果你可以讀取專案，先告訴我目前的專案名稱、工作路徑及你能使用的工具；這一步只讀取，不修改。
+資訊不足請追問，不要自行增加需求。最後整理一份需求文件，等我確認後再進入功能清單。`
+  return `${navMarkup()}<main class="page-shell"><section class="page-hero"><p class="breadcrumb"><a href="glossary.html">專有名詞總覽</a> ／ AI 助手</p><p class="eyebrow">AI ASSISTANT</p><h1>AI 助手：從問問題到一起完成工作</h1><p class="lead">我說清楚目標，AI 協助整理與實作，我檢查結果。先了解它有哪些工具與權限，才知道能把哪一步交給它。</p></section>
+  <figure class="learning-scene"><img src="assets/illustrations/ai-learning.webp" width="1672" height="941" alt="隼鳥與 Eddy 對談，說明目標並一起查看 AI 回覆" loading="lazy"></figure>
+  <section class="section"><div class="section-head"><h2>AI 助手是什麼？</h2><p>你可以把它當成能用日常語言溝通的工作夥伴：協助理解問題、整理材料、撰寫文件或產生程式。不過它可能理解錯誤，也可能漏掉細節，輸出仍要檢查。</p></div><div class="grid-2"><article class="card"><h3>對話型助手</h3><p>我提供文字、文件或圖片，它回覆說明、建議或草稿。能否上傳檔案、搜尋或產生作品，依產品與使用介面而定；能回答程式問題，不代表能直接修改我的電腦。</p></article><article class="card"><h3>能執行工作的 Agent</h3><p>除了理解需求，還能在指定環境中使用工具，例如讀取專案、修改檔案、執行指令與檢查結果。它必須具備對應工具與權限，並遵守我設定的操作範圍。</p></article></div></section>
+  <section class="section"><div class="section-head"><h2>助手、模型、提示詞與 Skill 差在哪裡？</h2></div><div class="grid-2"><article class="card"><h3>AI 助手／Agent：我在哪裡交辦</h3><p>是我使用的產品與操作環境。先確認它能接收什麼資料、使用哪些工具，以及是否能操作目前專案。</p></article><article class="card"><h3>模型：負責理解與推理</h3><p>同一個助手可能提供不同模型。模型會影響回覆與推理表現，但換模型不會自動取得檔案或終端機權限。</p><a href="term-language-model.html">了解 AI 模型 →</a></article><article class="card"><h3>提示詞：這次要完成什麼</h3><p>說明目標、背景、限制和希望取得的結果。例如「先幫我確認工作台需求，每次只問一題，不要寫程式」。</p><a href="prompts.html">查看課程提示詞 →</a></article><article class="card"><h3>Skill：沿用一套工作方法</h3><p>提供特定任務的操作步驟與參考材料。先確認 Skill 已安裝並載入；只在提示詞寫上名稱，不能當成已成功啟用，也不會自動增加工具權限。</p><a href="skill-guide.html">查看 Skill 使用方式 →</a></article></div></section>
+  <section class="section"><div class="section-head"><h2>開發網站時，我可以交給它哪些工作？</h2></div><ol class="assistant-steps"><li class="assistant-step"><strong>需求與功能：</strong>一次問一題，整理使用情境、功能與不做的範圍，由我確認。</li><li class="assistant-step"><strong>文件與畫面：</strong>依確認的需求產生 PRD、原型、UI 與技術文件；遇到缺口先提問。</li><li class="assistant-step"><strong>開發與測試：</strong>具備工具時，按照計畫修改指定檔案、執行測試並回報實際結果。</li><li class="assistant-step"><strong>驗收與版本：</strong>整理已通過、失敗與未測項目，保存可回復版本，再由我決定是否發布。</li></ol><p>AI 說「完成」不等於網站已通過驗收；我仍要實際點按、確認資料保存，並檢查測試證據。</p></section>
+  <section class="section"><div class="section-head"><h2>第一次使用，照這五步就好</h2></div><ol class="assistant-steps"><li class="assistant-step">先選一件小任務，例如整理工作台需求，不一次要求做完整系統。</li><li class="assistant-step">提供必要背景與示範資料，排除密碼、金鑰及不該分享的私人資料。</li><li class="assistant-step">需要操作專案時，確認專案名稱、資料夾與工具權限；還沒確定就先只讀。</li><li class="assistant-step">說清楚這一步的範圍與產物，要求缺少資訊時先問我。</li><li class="assistant-step">檢查輸出與實際結果，修正後保存版本，再繼續下一階段。</li></ol></section>
+  <section class="section"><div class="section-head"><h2>範例：開始做我的個人工作台</h2><p>把下面這份貼到你正在使用的 AI 助手。這一步先完成需求訪談，下一步才是功能清單。</p></div>${collaborationPromptPanel("可直接使用的提示詞", prompt).replaceAll("分工指令", "提示詞")}</section>
+  <section class="section"><div class="grid-2"><article class="card"><h2>怎麼知道它真的做了？</h2><ul><li>整理需求：能指出已確認內容與待回答問題。</li><li>修改程式：列出修改檔案與原因。</li><li>執行測試：提供步驟、實際結果與失敗項目。</li><li>未能操作：明確說明限制，而不是宣稱成功。</li></ul></article><article class="card"><h2>常見錯誤</h2><ul><li>只比模型名字，沒確認是否能操作專案。</li><li>一句「幫我做網站」，卻沒有目標和驗收條件。</li><li>允許 AI 自行補需求，最後做出不同的產品。</li><li>沒保存版本就大幅修改，或直接發布未驗收內容。</li></ul></article></div></section>
+  <section class="section"><div class="lesson-nav"><a class="button button-secondary" href="model-guide.html">比較各家 AI 工具 →</a><a class="button button-primary" href="stage-00.html">開始準備我的開發環境 →</a><a href="glossary.html">回到名詞總覽</a></div></section></main>${footerMarkup()}`
+}
+
 function termPage(slug) {
+  if (slug === "ai-assistant") return aiAssistantLesson()
   const term = termCatalog.find(item => item.slug === slug) || termCatalog[0]
   const stageNumber = term.stage.match(/階段 (\d+)/)?.[1]
   const relatedStage = stageNumber === undefined ? "roadmap.html" : `stage-${String(stageNumber).padStart(2, "0")}.html`
