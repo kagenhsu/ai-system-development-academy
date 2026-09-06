@@ -566,3 +566,14 @@ a.system-type-card .card-link { display: block; margin-top: 16px; }
  .hero-board .mascot-hero { width: 170px; grid-column: 1; grid-row: auto; justify-self: center; margin: 0; }
  .learning-scene { margin: 20px auto; border-radius: 16px; }
 }
+
+.model-table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: white; }
+.model-comparison-table { width:100%; min-width:1050px; border-collapse:collapse; font-size:14px; line-height:1.7; }
+.model-comparison-table caption { text-align:left; padding:16px 20px; font-weight:700; color:var(--muted); }
+.model-comparison-table th, .model-comparison-table td { padding:18px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); border-right:1px solid var(--line); }
+.model-comparison-table thead th { background:var(--sky); color:var(--blue-deep); }
+.model-comparison-table tbody th { min-width:170px; }
+.model-comparison-table td { min-width:160px; }
+.model-comparison-table tbody tr:nth-child(even) { background:#f6fafc; }
+.model-comparison-table tr[hidden] { display:none; }
+.model-table-scroll:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
